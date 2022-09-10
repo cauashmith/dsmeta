@@ -1,33 +1,42 @@
+import { useState } from "react";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import NotificationButton from '../NotificationButton';
 import './styles.css';
 
 function SalesCard() {
+
+    // aqui, new Date é transformado em objeto, e o a conta realizada é feita ao dar um get na data e tirar 365, depois, setando-a na variavel
+    const min = new Date(new Date().setDate(new Date().getDate() - 365)) // SETANDO HORA MINIMA EM UM ANO ATRÁS ( - 365 ) 
+    const max = new Date()                                              // ATRIBUINDO UMA VARIÁVEL "max" PARA O DIA ATUAL
+
+    const [minDate, setMinDate] = useState(min);
+    const [maxDate, setMaxDate] = useState(max);
+
     return (
         <div className="dsmeta-card">
             <h2 className="dsmeta-sales-title">Vendas</h2>
             <div>
                 <div className="dsmeta-form-control-container">
-                    <DatePicker
-                        selected={new Date()}
-                        onChange={(date: Date) => { }}
+                    <DatePicker           //DATA MINIMA      // AQUI HAVIA UM INPUT, POREM FOI SUBSTITUIDO PELO DATE PICKER
+                        selected={minDate}                  // PARA QUE POSSA SER FEITA A PROCURA POR DATA MINIMA E DATA MAXIMA
+                        onChange={(date: Date) => setMinDate(date)}
                         className="dsmeta-form-control"
                         dateFormat="dd/MM/yyyy"
                     />
                 </div>
                 <div className="dsmeta-form-control-container">
-                    <DatePicker
-                        selected={new Date()}
-                        onChange={(date: Date) => { }}
-                        className="dsmeta-form-control"
-                        dateFormat="dd/MM/yyyy"
+                    <DatePicker          //DATA MAXIMA
+                        selected={maxDate}
+                        onChange={(date: Date) => setMaxDate(date)}
+                        className="dsmeta-form-control" 
+                        dateFormat="dd/MM/yyyy" 
                     />
                 </div>
             </div>
 
             <div>
-                <table className="dsmeta-sales-table">
+                <table className="dsmeta-sales-table"> 
                     <thead>
                         <tr>
                             <th className="show992">ID</th>

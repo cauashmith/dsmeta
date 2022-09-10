@@ -7,9 +7,9 @@ function Header() {
         <header>
             <div className="dsmeta-logo-container">
                 <img src={logo} alt="DSMeta" />
-                <h1>DSMeta</h1>
+                    <h1>Spring React Application</h1>
                 <p>
-                    <b>Desenvolvido por <a href="https://www.instagram.com/cauashmith/">@cauashmith</a></b>
+                    <b>Desenvolvido por <a href="https://www.instagram.com/cauashmith/" target="_blank" >@cauashmith</a></b>
                 </p>
             </div>
         </header>
